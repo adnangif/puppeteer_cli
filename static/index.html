@@ -24,7 +24,7 @@
             <button @click="updateDB" class="danger">Restore</button>
             <button @click="restartNow" class="danger">Restart instance</button>
             <button @click="save" class="safe">Save</button>
-            <button @click="postCommand" class="safe">Post Commands</button>
+            <button @click="postCommand" class="safe">Run All</button>
         </div>
         <div class="box">
             <input type="text" v-model="command">
@@ -34,6 +34,7 @@
         <ul>
             <li v-for="(item,index) in commandDB.commandList">{{ item }}
                 <div class="btn-container">
+                    <i class="fas fa-dot-circle hide"></i>
                     <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
                     <button class="danger" @click="removeCommand(index)">Remove</button>
                 </div>

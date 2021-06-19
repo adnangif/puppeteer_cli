@@ -46,7 +46,7 @@ app.post("/", (req, res) => {
 	}
 });
 
-// ======================== PUPPETEER_____SECTION =================================
+// ======================== PUPPETEER_____SECTION__START =================================
 import puppeteer from "puppeteer";
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
@@ -82,6 +82,10 @@ const runInPuppeteer = (command) => {
 	}
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
+let ready = true;
+app.get("/ready", (req, res) => {
+	res.send(ready);
+});
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {

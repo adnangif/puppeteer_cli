@@ -1,6 +1,17 @@
+// variables
+$danger:#cf343e;
+$safe: rgb(106, 184, 106);
+
 body{
 	color:#fff;
 	background-color: rgb(61, 61, 61);
+}
+.hide{
+	display:none;
+}
+.fa-dot-circle{
+	margin-right:20px;
+	color: $safe;
 }
 
 *{
@@ -15,7 +26,7 @@ ul{
 	li{
 		display: flex;
 		justify-content:space-between;
-		border-bottom: 2px solid rgb(106, 184, 106);
+		border-bottom: 2px solid $safe;
 		margin: 20px 0;
 	}
 }
@@ -45,10 +56,10 @@ button{
 	cursor: pointer;
 
 	&.danger{
-		background-color: #cf343e;
+		background-color: $danger;
 	}
 	&.safe{
-		background-color:rgb(106, 184, 106);
+		background-color: $safe;
 	}
 }
 h2{
