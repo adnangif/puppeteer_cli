@@ -93,10 +93,23 @@ const app = Vue.createApp({
 			this.postCommand();
 			this.commandDB.saveCommands = false;
 		},
-        // Redo a command 
-        redoCommand(index){
-            console.log('redo command index ' + index)
-        }
+		// Redo a command
+		redoCommand(index) {
+			console.log("redo command index " + index);
+			const newC = this.commandDB.commandList[index];
+			console.log(newC);
+			(async () => {
+				const url = this.base_url + "/newCommand";
+				const res = await fetch(url, {
+					method: "POST",
+					headers: {
+						Accept: "application/json",
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({ command: newC }),
+				});
+			})();
+		},
 	},
 });
 
