@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Puppeteer Script Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./scss/styles.css">
+    <script src="https://unpkg.com/vue@3.0.2" defer></script>
+    <script src="./js/main.js" defer></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="secondary-commands">
+            <button @click="updateDB" class="danger">Restore</button>
+            <button @click="restartNow" class="danger">Restart instance</button>
+            <button @click="save" class="safe">Save</button>
+            <button @click="postCommand" class="safe">Post Commands</button>
+        </div>
+        <div class="box">
+            <input type="text" v-model="command">
+            <button class="safe" @click="addCommand">Run Command</button>
+        </div>
+        <h2>commands <i class="fas fa-arrow-right"></i></h2>
+        <ul>
+            <li v-for="(item,index) in commandDB.commandList">{{ item }}
+                <div class="btn-container">
+                    <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
+                    <button class="danger" @click="removeCommand(index)">Remove</button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
