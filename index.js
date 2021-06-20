@@ -101,7 +101,7 @@ app.post("/newCommand", (req, res) => {
 app.post("/runAll", (req, res) => {
 	res.sendStatus(201);
 	const allCommands = req.body;
-	console.log(`running ${allCommands.length} commands...`);
+	console.log(`\n\n\nrunning ${allCommands.length} commands...`);
 
 	allCommands.forEach((command) => {
 		runInPuppeteer(command);
