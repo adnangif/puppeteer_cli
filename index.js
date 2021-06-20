@@ -1,7 +1,6 @@
 import express, { json, urlencoded } from "express";
 import { readFile, writeFile } from "fs";
 import open from "open";
-
 // variables
 const PORT = process.env.PORT || 3000;
 
@@ -112,7 +111,13 @@ app.post("/runAll", (req, res) => {
 
 // app listens on port 3000
 app.listen(PORT, () => {
-	console.log("started server at: http://localhost:" + PORT);
+    
+	console.log("\n\n\n\n\n\n\n\n\n\n\n\n");
+	console.log("=======================*******==========================");
+	console.log("\n\n\n");
+	console.log("Open in browser: ");
+	console.log("SERVER STARTED AT:>>>>>> http://localhost:" + PORT);
+	console.log("\n\n\n");
 });
 // open app in a browser
-await open("http://localhost:" + PORT);
+// await open("http://localhost:" + PORT);
