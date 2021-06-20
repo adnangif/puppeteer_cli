@@ -1,1 +1,1 @@
-{"commandList":["console.log('command5')","console.log('command4')","console.log('command3')","console.log('command2')","console.log('command1')","page.goto('https://google.com')","console.log('hello world')"],"saveCommands":true,"restartInstance":true}
+{"commandList":[],"restartInstance":false,"runFromStart":false,"saveCommands":true}

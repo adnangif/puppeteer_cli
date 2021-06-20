@@ -22,7 +22,16 @@ const delay = (ms, callbackFunc = () => {}) => {
 app.get("/saved", (req, res) => {
 	readFile("saved.json", (err, data) => {
 		if (err) {
-			throw err;
+			console.log(err);
+			return res.send({
+				commandList: [
+					"page.goto('https://google.com')",
+					"console.log('hello world')",
+				],
+				restartInstance: false,
+				runFromStart: false,
+				saveCommands: false,
+			}); // send a dummy object if file not found
 		} else {
 			console.log(JSON.parse(data));
 			return res.send(JSON.parse(data));
@@ -111,7 +120,6 @@ app.post("/runAll", (req, res) => {
 
 // app listens on port 3000
 app.listen(PORT, () => {
-    
 	console.log("\n\n\n\n\n\n\n\n\n\n\n\n");
 	console.log("=======================*******==========================");
 	console.log("\n\n\n");
