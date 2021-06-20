@@ -47,6 +47,12 @@ app.post("/", (req, res) => {
 });
 
 // ======================== PUPPETEER_____SECTION__START =================================
+// check mark to tell if the puppeteer is ready
+let ready = true; // at first puppeteer is ready
+app.get('/ready',(req,res)=>{
+	res.send({"ready": ready})
+})
+// puppeteer code injection starts here
 import puppeteer from "puppeteer";
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
@@ -65,27 +71,23 @@ let page = await browser.newPage();
 const keep = {};
 // puppeteer runs from this function
 const runInPuppeteer = (command) => {
-	try {
-		// console.log(typeof page);
-		console.log("running in puppeteer : " + command);
-		// const r = "page.goto('https://google.com')"
-		eval(command);
-		// const runCommand = () => {
-		//         // ${command}
-		// 	const cmd = `()=> ${command}`;
-		// 	console.log(cmd);
-		// 	(1, eval)(cmd);
-		// };
-		// runCommand();
-	} catch (error) {
-		console.log(error);
+	if (ready) {
+		try {
+			ready = false; // set ready to false so we can delay the next puppeteer command 
+			console.log("running in puppeteer : " + command);
+			eval(command);
+		} catch (error) {
+			console.log(error);
+		}
+		setTimeout(() => {
+			console.log("timeout was set to 1 sec");
+			ready = true;
+		}, 2000);
+	} else {
+		console.log("Maximum 1 request per second");
 	}
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
-let ready = true;
-app.get("/ready", (req, res) => {
-	res.send(ready);
-});
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {
@@ -95,6 +97,11 @@ app.post("/newCommand", (req, res) => {
 	// run command in puppeteer
 	runInPuppeteer(newCommand.command);
 });
+
+app.post("/runAll",(req,res)=>{
+	res.sendStatus(201)
+	console.log(req.body)
+})
 
 // app listens on port 3000
 app.listen(PORT, () => {

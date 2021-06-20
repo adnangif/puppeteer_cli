@@ -110,6 +110,104 @@ const app = Vue.createApp({
 				});
 			})();
 		},
+
+		// delaying Function
+		// blocks main eventLoop to simulate synchronous sleep
+		delay(ms, callbackFunc = () => {}) {
+			Atomics.wait(new Int32Array(new SharedArrayBuffer(32)), 0, 0, ms);
+			callbackFunc();
+		},
+
+		// run all the commands one by one
+		runAll() {
+			console.log("clicked runAll");
+
+			let data = [...this.commandDB.commandList];
+			data.reverse();
+			console.log(data);
+
+			const url = this.base_url + "/runAll";
+			fetch(url, {
+				method: "POST",
+				headers: {
+					accept: "application/json",
+					"content-type": "application/json",
+				},
+                body:JSON.stringify(data)
+			});
+			// (async () => {
+			// 	const url = this.base_url + "/ready";
+			// 	const res = await fetch(url, {
+			// 		method: "GET",
+			// 		headers: {
+			// 			accept: "application/json",
+			// 			"content-type": "application/json",
+			// 		},
+			// 	});
+			// 	const data = await res.json();
+			// 	puppeteerReady = await data.ready;
+			// 	puppeteerReady = false;
+			// 	if (puppeteerReady) {
+			// 		console.log("puppeteer is ready");
+			// 		index--;
+			// 	} else {
+			// 		console.log("Not ready, delaying by 1 sec");
+			// 		this.delay(1000);
+			// 	}
+			// })();
+
+			// const newC = this.commandDB.commandList[index];
+			// (async () => {
+			// 	const url = this.base_url + "/newCommand";
+			// 	const res = await fetch(url, {
+			// 		method: "POST",
+			// 		headers: {
+			// 			Accept: "application/json",
+			// 			"content-type": "application/json",
+			// 		},
+			// 		body: JSON.stringify({ command: newC }),
+			// 	});
+			// })();
+			// this.delay(5000);
+
+			// console.log("running all the commands");
+			// for (let index = this.commandDB.commandList.length - 1; index >= 0; ) {
+			// 	const url = this.base_url + "/ready";
+			// 	fetch(url, {
+			// 		method: "GET",
+			// 		headers: {
+			// 			accept: "application/json",
+			// 			"content-type": "application/json",
+			// 		},
+			// 	})
+			// 		.then((res) => {
+			// 			return res.json();
+			// 		})
+			// 		.then((puppeteerCondition) => {
+			// 			// console.log(typeof condition.ready)
+			// 			if (puppeteerCondition.ready) {
+			// 				index--;
+			// 				const newC = this.commandDB.commandList[index];
+			// 				(async () => {
+			// 					const url = this.base_url + "/newCommand";
+			// 					const res = await fetch(url, {
+			// 						method: "POST",
+			// 						headers: {
+			// 							Accept: "application/json",
+			// 							"content-type": "application/json",
+			// 						},
+			// 						body: JSON.stringify({ command: newC }),
+			// 					});
+			// 				})();
+			// 			}
+			//             // else {
+			// 			// 	this.delay(2000);
+			// 			// }
+			// 		});
+			// console.log("wait");
+			// console.log(this.commandDB.commandList[i]);
+			// }
+		},
 	},
 });
 
