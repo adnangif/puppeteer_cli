@@ -1,1 +1,0 @@
-{"commandList":["page.type('input','\\n')","page.type('input','puppeteer')","page.click('input')","page.goto('https://google.com')","console.log('hello world')"],"restartInstance":false,"runFromStart":false,"saveCommands":true}
