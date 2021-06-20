@@ -21,13 +21,13 @@
 <body>
     <div id="app" class="container">
         <div class="secondary-commands">
-            <button @click="updateDB" class="danger">Load Saved</button>
-            <button @click="restartNow" class="danger">Restart instance</button>
-            <button @click="save" class="safe">Save & Restart</button>
-            <button @click="runAll" class="safe">Run All</button>
+            <button @click="updateDB" class="danger">Load Saved Commands</button>
+            <!-- <button @click="restartNow" class="danger">Restart instance</button> -->
+            <button @click="save" class="safe">Save</button>
+            <!-- <button @click="runAll" class="safe">Run All</button> -->
         </div>
         <div class="box">
-            <input type="text" v-model="command">
+            <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp" v-model="command">
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
         <h2>commands <i class="fas fa-arrow-right"></i></h2>

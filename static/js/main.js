@@ -13,6 +13,7 @@ const app = Vue.createApp({
 				saveCommands: false,
 			},
 			command: "",
+			cmd_count: 0,
 			data: {},
 		};
 	},
@@ -58,6 +59,7 @@ const app = Vue.createApp({
 				})();
 
 				this.command = "";
+                this.cmd_count = 0; // resetting 
 			}
 		},
 		// removes command from the list
@@ -131,6 +133,29 @@ const app = Vue.createApp({
 		delay(ms, callbackFunc = () => {}) {
 			Atomics.wait(new Int32Array(new SharedArrayBuffer(32)), 0, 0, ms);
 			callbackFunc();
+		},
+
+		// adding accessing history feature
+		arrowUp() {
+			if (this.cmd_count == 0) {
+				// do nothing
+			} else {
+				this.cmd_count--;
+				if (this.cmd_count == 0) {
+					this.command = "";
+				} else {
+					this.command = this.commandDB.commandList[this.cmd_count - 1];
+				}
+			}
+		},
+		arrowDown() {
+			const command_list_len = this.commandDB.commandList.length;
+			if (this.cmd_count == command_list_len) {
+				// do nothing
+			} else {
+				this.cmd_count++;
+				this.command = this.commandDB.commandList[this.cmd_count - 1];
+			}
 		},
 
 		// run all the commands one by one
