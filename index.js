@@ -63,7 +63,11 @@ app.post("/", (req, res) => {
 // ======================== PUPPETEER_____SECTION__START =================================
 
 // puppeteer code injection starts here
-import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer";
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+puppeteer.use(StealthPlugin())
+
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
 let options = {
