@@ -58,9 +58,7 @@ import puppeteer from "puppeteer";
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
 let options = {
-	// For debugging purpose
-	headless: false,
-
+	headless: false, // For debugging purpose
 	defaultViewport: {
 		width: 320,
 		height: 570,
@@ -69,7 +67,7 @@ let options = {
 const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
 
-// keep all the data here for runtime purposes
+// keep all the data here for runtime purposes, canbe accessed from the virtual console
 const keep = {};
 
 // check mark to tell if the puppeteer is ready
@@ -80,8 +78,6 @@ const runInPuppeteer = (command) => {
 	if (ready) {
 		try {
 			ready = false; // set ready to false so we can delay the next puppeteer command
-
-			
 			eval(command);// magic happens in this line :)
 		} catch (error) {
 			console.log(error);
