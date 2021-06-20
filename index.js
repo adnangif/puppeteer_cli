@@ -13,6 +13,14 @@ app.use(express.static("static"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
+//=====================CUSTOM_FUNCTION_END==================================
+const delay = (ms, callbackFunc = () => {}) => {
+	Atomics.wait(new Int32Array(new SharedArrayBuffer(32)), 0, 0, ms);
+	callbackFunc();
+};
+
+//=======================CUSTOM_FUNCTION_END=================================
+
 // get previously saved data in json
 app.get("/saved", (req, res) => {
 	readFile("saved.json", (err, data) => {
@@ -47,11 +55,7 @@ app.post("/", (req, res) => {
 });
 
 // ======================== PUPPETEER_____SECTION__START =================================
-// check mark to tell if the puppeteer is ready
-let ready = true; // at first puppeteer is ready
-app.get('/ready',(req,res)=>{
-	res.send({"ready": ready})
-})
+
 // puppeteer code injection starts here
 import puppeteer from "puppeteer";
 const USER_AGENT =
@@ -67,22 +71,30 @@ let options = {
 };
 const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
+
 // keep all the data here
 const keep = {};
+
+// check mark to tell if the puppeteer is ready
+let ready = true; // at first puppeteer is ready
 // puppeteer runs from this function
+// runInPuppeteer
 const runInPuppeteer = (command) => {
 	if (ready) {
 		try {
-			ready = false; // set ready to false so we can delay the next puppeteer command 
+			ready = false; // set ready to false so we can delay the next puppeteer command
 			console.log("running in puppeteer : " + command);
+			// magic happens in this line :)
 			eval(command);
 		} catch (error) {
 			console.log(error);
 		}
-		setTimeout(() => {
-			console.log("timeout was set to 1 sec");
-			ready = true;
-		}, 2000);
+		console.log(`completed task ${command}`);
+		ready = true;
+		// setTimeout(() => {
+		// 	console.log("timeout was set to 1 sec");
+		// 	ready = true;
+		// }, 2000);
 	} else {
 		console.log("Maximum 1 request per second");
 	}
@@ -98,10 +110,34 @@ app.post("/newCommand", (req, res) => {
 	runInPuppeteer(newCommand.command);
 });
 
-app.post("/runAll",(req,res)=>{
-	res.sendStatus(201)
-	console.log(req.body)
-})
+// runs all the commands one by one
+app.post("/runAll", (req, res) => {
+	res.sendStatus(201);
+	const allCommands = req.body;
+	console.log(`running ${allCommands.length} commands...`);
+
+	allCommands.forEach((command) => {
+		runInPuppeteer(command);
+		delay(3000);
+	});
+	// for (let i = 0; i < allCommands.length; ) {
+	// 	if (ready) {
+	// 		runInPuppeteer(allCommands[i]);
+	// 		i++;
+	// 	} else {
+	// 		console.log('delaying')
+	// 		delay(2000);
+	// 	}
+		// setTimeout(()=>{
+		// 	console.log('waiting...')
+		// },500)
+	// }
+	// allCommands.forEach((command) => {
+	//     delay(1000)
+	//     runInPuppeteer(command);
+	// 	// console.log(`running command: ${command}`);
+	// });
+});
 
 // app listens on port 3000
 app.listen(PORT, () => {
