@@ -34,7 +34,7 @@
         <ul>
             <li v-for="(item,index) in commandDB.commandList">{{ item }}
                 <div class="btn-container">
-                    <i class="fas fa-dot-circle hide"></i>
+                    <button  class="no-click hide"><i class="fas fa-redo"></i></button>
                     <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
                     <button class="danger" @click="removeCommand(index)">Remove</button>
                 </div>

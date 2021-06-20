@@ -1,6 +1,7 @@
 // variables
 $danger:#cf343e;
 $safe: rgb(106, 184, 106);
+$no-click: rgb(219, 219, 45);
 
 body{
 	color:#fff;
@@ -8,10 +9,6 @@ body{
 }
 .hide{
 	display:none;
-}
-.fa-dot-circle{
-	margin-right:20px;
-	color: $safe;
 }
 
 *{
@@ -60,6 +57,10 @@ button{
 	}
 	&.safe{
 		background-color: $safe;
+	}
+	&.no-click{
+		background-color: $no-click;
+		pointer-events: none;
 	}
 }
 h2{
