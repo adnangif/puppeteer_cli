@@ -77,7 +77,7 @@ const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
 
 // keep all the data here for runtime purposes, canbe accessed from the virtual console
-const keep = {};
+let keep = {};
 
 // check mark to tell if the puppeteer is ready
 let ready = true; // at first puppeteer is ready
