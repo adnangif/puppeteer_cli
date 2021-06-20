@@ -30,7 +30,7 @@ app.get("/saved", (req, res) => {
 				],
 				restartInstance: false,
 				runFromStart: false,
-				saveCommands: false,
+				saveCommands: true,
 			}); // send a dummy object if file not found
 		} else {
 			console.log(JSON.parse(data));
