@@ -78,7 +78,7 @@ const runInPuppeteer = (command) => {
 	if (ready) {
 		try {
 			ready = false; // set ready to false so we can delay the next puppeteer command
-			eval(command);// magic happens in this line :)
+			eval(command); // magic happens in this line :)
 		} catch (error) {
 			console.log(error);
 		}
@@ -94,7 +94,7 @@ const runInPuppeteer = (command) => {
 app.post("/newCommand", (req, res) => {
 	res.sendStatus(201);
 	let newCommand = req.body;
-	runInPuppeteer(newCommand.command);          // run command in puppeteer
+	runInPuppeteer(newCommand.command); // run command in puppeteer
 });
 
 // runs all the commands one by one
