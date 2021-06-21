@@ -87,7 +87,7 @@ await browser.close();
 					}
 				})();
 
-				this.command = "";
+				this.command = "";  // resetting
 				this.cmd_count = 0; // resetting
 			}
 		},
@@ -138,7 +138,6 @@ await browser.close();
 				waitDisk.classList.toggle("hide");
 			}, 1000);
 
-			console.log(newC);
 			(async () => {
 				const url = this.base_url + "/newCommand";
 				const res = await fetch(url, {
