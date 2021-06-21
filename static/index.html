@@ -38,12 +38,12 @@
         <div class="text-box hide">
             <textarea id="code" cols="90" rows="10" v-bind:value="code"></textarea>
         </div>
+        <!-- <h2>commands <i class="fas fa-arrow-right"></i></h2> -->
         <div class="box">
             <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp"
                 v-model="command">
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
-        <h2>commands <i class="fas fa-arrow-right"></i></h2>
         <ul>
             <li v-for="(item,index) in commandDB.commandList">{{ item }}
                 <div class="btn-container">
