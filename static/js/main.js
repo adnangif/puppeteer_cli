@@ -84,11 +84,6 @@ const app = Vue.createApp({
 				});
 			})();
 		},
-		restartNow() {
-			this.commandDB.restartInstance = true;
-			this.postCommand();
-			this.commandDB.restartInstance = false;
-		},
 		// save commands to the backend
 		save() {
 			this.commandDB.saveCommands = true;
