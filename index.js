@@ -64,9 +64,9 @@ app.post("/", (req, res) => {
 
 // puppeteer code injection starts here
 // import puppeteer from "puppeteer";
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-puppeteer.use(StealthPlugin())
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+puppeteer.use(StealthPlugin());
 
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
@@ -90,13 +90,14 @@ let ready = true; // at first puppeteer is ready
 const runInPuppeteer = (command) => {
 	if (ready) {
 		try {
-			ready = false; // set ready to false so we can delay the next puppeteer command
+			// ready = false; // set ready to false so we can delay the next puppeteer command
 			eval(command); // magic happens in this line :)
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
+			throw error;
 		}
 		console.log(`completed task: ${command}`);
-		ready = true;
+		// ready = true;
 	} else {
 		console.log("Maximum 1 request per second");
 	}
@@ -105,9 +106,16 @@ const runInPuppeteer = (command) => {
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {
-	res.sendStatus(201);
 	let newCommand = req.body;
-	runInPuppeteer(newCommand.command); // run command in puppeteer
+	try {
+		runInPuppeteer(newCommand.command); // run command in puppeteer
+		console.log('success!')
+		res.send({message:"success"})
+	} catch (error) {
+		console.log(error)
+		console.log("failure!")
+		res.send({message:"failure"})
+	}
 });
 
 // runs all the commands one by one
@@ -123,13 +131,13 @@ app.post("/runAll", (req, res) => {
 });
 
 // generate Script
-app.post("/generate",(req,res)=>{
-    console.log("generated...")
-    res.send({
-	    link: "https://google.com"
-    })
-    console.log(req.body)
-})
+app.post("/generate", (req, res) => {
+	console.log("generated...");
+	res.send({
+		link: "https://google.com",
+	});
+	console.log(req.body);
+});
 
 // app listens on port 3000
 app.listen(PORT, () => {

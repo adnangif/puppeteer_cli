@@ -79,6 +79,12 @@ await browser.close();
 						},
 						body: JSON.stringify({ command: this.command }),
 					});
+					const data = await res.json();
+					if (data.message === "success") {
+						this.showSuccessMessage();
+					} else {
+						this.showFailureMessage();
+					}
 				})();
 
 				this.command = "";
@@ -143,6 +149,14 @@ await browser.close();
 					},
 					body: JSON.stringify({ command: newC }),
 				});
+				const data = await res.json();
+
+				// Show message
+				if (data.message === "success") {
+					this.showSuccessMessage();
+				} else {
+					this.showFailureMessage();
+				}
 			})();
 		},
 
@@ -209,6 +223,20 @@ await browser.close();
 					runAllBtn.classList.toggle("no-click");
 				}
 			}, 2000);
+		},
+		showSuccessMessage() {
+			const tl = gsap.timeline({
+				defaults: { duration: 1, ease: "power2.inOut" },
+			});
+			tl.to('.msg.success',{x:10})
+			tl.to('.msg.success',{x:"-110%", delay:1})
+		},
+		showFailureMessage() {
+			const tl = gsap.timeline({
+				defaults: { duration: 1, ease: "power2.inOut" },
+			});
+			tl.to('.msg.failure',{x:10})
+			tl.to('.msg.failure',{x:"-110%", delay:1})
 		},
 	},
 });

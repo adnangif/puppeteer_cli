@@ -98,3 +98,28 @@ h2 {
 		display: none;
 	}
 }
+
+.msg {
+	display: flex;
+	flex-direction: column;
+	color: black;
+	font-size: 18px;
+	font-weight: bolder;
+	position: sticky;
+	bottom: 10px;
+	left: 10px;
+	padding: 10px 100px;
+	pointer-events: none;
+	box-shadow: 0 0 5px rgb(29, 28, 28);
+	border-radius: 20px;
+	transform: translateX(-150%);
+	width: 80%;
+	overflow: hidden;
+
+	&.success {
+		background-color: rgba(74, 190, 74, 0.445);
+	}
+	&.failure{
+		background-color: #cf343e6c;
+	}
+}

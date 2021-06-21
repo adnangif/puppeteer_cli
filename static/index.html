@@ -12,6 +12,9 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./scss/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"
+        integrity="sha512-2fk3Q4NXPYAqIha0glLZ2nluueK43aNoxvijPf53+DgL7UW9mkN+uXc1aEmnZdkkZVvtJZltpRt+JqTWc3TS3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
         integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
@@ -33,7 +36,7 @@
             </button>
         </div>
         <div class="text-box hide">
-            <textarea  id="code" cols="90" rows="10" v-bind:value="code"></textarea>
+            <textarea id="code" cols="90" rows="10" v-bind:value="code"></textarea>
         </div>
         <div class="box">
             <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp"
@@ -52,6 +55,8 @@
         </ul>
 
     </div>
+    <div class="msg success">Success!</div>
+    <div class="msg failure">Failure!</div>
 
 </body>
 
