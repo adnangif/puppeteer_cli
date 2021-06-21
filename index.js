@@ -33,7 +33,7 @@ app.get("/saved", (req, res) => {
 				saveCommands: true,
 			}); // send a dummy object if file not found
 		} else {
-			console.log(JSON.parse(data));
+			// console.log(JSON.parse(data));
 			return res.send(JSON.parse(data));
 		}
 	});
@@ -43,7 +43,7 @@ app.get("/saved", (req, res) => {
 app.post("/", (req, res) => {
 	res.sendStatus(201);
 	let data = req.body;
-	console.log(data);
+	// console.log(data);
 
 	// checks if the frontend wants to save the commands
 	if (data.saveCommands) {
