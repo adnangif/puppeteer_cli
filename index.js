@@ -1,6 +1,6 @@
 import express, { json, urlencoded } from "express";
 import { readFile, writeFile } from "fs";
-import open from "open";
+
 // variables
 const PORT = process.env.PORT || 3000;
 
