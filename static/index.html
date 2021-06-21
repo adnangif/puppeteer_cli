@@ -12,6 +12,9 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./scss/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+        integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://unpkg.com/vue@3.0.2" defer></script>
     <script src="./js/main.js" defer></script>
     <link rel="shortcut icon" href="#" type="image/x-icon">
@@ -25,16 +28,18 @@
             <!-- <button @click="restartNow" class="danger">Restart instance</button> -->
             <button @click="save" class="safe">Save</button>
             <!-- <button @click="runAll" class="safe">Run All</button> -->
+            <button @click="generateScript" class="safe">Generate Script</button>
         </div>
         <div class="box">
-            <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp" v-model="command">
+            <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp"
+                v-model="command">
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
         <h2>commands <i class="fas fa-arrow-right"></i></h2>
         <ul>
             <li v-for="(item,index) in commandDB.commandList">{{ item }}
                 <div class="btn-container">
-                    <button  class="no-click hide"><i class="fas fa-redo"></i></button>
+                    <button class="no-click hide"><i class="fas fa-redo"></i></button>
                     <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
                     <button class="danger" @click="removeCommand(index)">Remove</button>
                 </div>
