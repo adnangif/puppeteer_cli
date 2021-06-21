@@ -59,7 +59,7 @@ const app = Vue.createApp({
 				})();
 
 				this.command = "";
-                this.cmd_count = 0; // resetting 
+				this.cmd_count = 0; // resetting
 			}
 		},
 		// removes command from the list
@@ -158,24 +158,44 @@ const app = Vue.createApp({
 			}
 		},
 
-		// run all the commands one by one
-		runAll() {
-			console.log("clicked runAll");
-
-			let data = [...this.commandDB.commandList];
-			data.reverse();
-			console.log(data);
-
-			const url = this.base_url + "/runAll";
+		generateScript() {
+			console.log("generating script...");
+			console.log(typeof FileSaver);
+			const url = this.base_url + "/generate";
 			fetch(url, {
 				method: "POST",
 				headers: {
 					accept: "application/json",
 					"content-type": "application/json",
 				},
-				body: JSON.stringify(data),
-			});
+				body: JSON.stringify({
+					msg: "Generate Script please",
+				}),
+			}).then((res) => {
+				return res.json();
+			}).then((data)=>{
+				console.log(data)
+			})
 		},
+
+		// // run all the commands one by one
+		// runAll() {
+		// 	console.log("clicked runAll");
+
+		// 	let data = [...this.commandDB.commandList];
+		// 	data.reverse();
+		// 	console.log(data);
+
+		// 	const url = this.base_url + "/runAll";
+		// 	fetch(url, {
+		// 		method: "POST",
+		// 		headers: {
+		// 			accept: "application/json",
+		// 			"content-type": "application/json",
+		// 		},
+		// 		body: JSON.stringify(data),
+		// 	});
+		// },
 	},
 });
 

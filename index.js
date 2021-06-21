@@ -122,6 +122,15 @@ app.post("/runAll", (req, res) => {
 	});
 });
 
+// generate Script
+app.post("/generate",(req,res)=>{
+    console.log("generated...")
+    res.send({
+	    link: "https://google.com"
+    })
+    console.log(req.body)
+})
+
 // app listens on port 3000
 app.listen(PORT, () => {
 	console.log("\n\n\n\n\n\n\n\n\n\n\n\n");
