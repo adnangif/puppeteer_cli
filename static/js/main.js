@@ -183,6 +183,7 @@ await browser.close();
 			}
 		},
 
+		// generate script 
 		generateScript() {
 			const text_box_parent = document.querySelector(".text-box");
 
@@ -195,6 +196,7 @@ await browser.close();
 			gen_btn.classList.toggle("danger");
 		},
 
+		// runs all the listed commands one by one 
 		runAll() {
 			// Make run All button unclickable
 			const runAllBtn = document.querySelector(".run-all");
