@@ -10,13 +10,6 @@ app.use(express.static("static"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-//=====================CUSTOM_FUNCTION_END==================================
-const delay = (ms, callbackFunc = () => {}) => {
-	Atomics.wait(new Int32Array(new SharedArrayBuffer(32)), 0, 0, ms);
-	callbackFunc();
-};
-
-//=======================CUSTOM_FUNCTION_END=================================
 
 // get previously saved data in json
 app.get("/saved", (req, res) => {
