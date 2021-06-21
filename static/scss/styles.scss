@@ -27,6 +27,9 @@ ul {
 		justify-content: space-between;
 		border-bottom: 2px solid $safe;
 		margin: 20px 0;
+		p{
+			overflow: auto;
+		}
 	}
 }
 .box {

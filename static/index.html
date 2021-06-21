@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./scss/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"
         integrity="sha512-2fk3Q4NXPYAqIha0glLZ2nluueK43aNoxvijPf53+DgL7UW9mkN+uXc1aEmnZdkkZVvtJZltpRt+JqTWc3TS3Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" defer ></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
         integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
@@ -45,7 +45,8 @@
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
         <ul>
-            <li v-for="(item,index) in commandDB.commandList">{{ item }}
+            <li v-for="(item,index) in commandDB.commandList">
+                <p>{{ item }}</p>
                 <div class="btn-container">
                     <button class="no-click hide"><i class="fas fa-redo"></i></button>
                     <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>

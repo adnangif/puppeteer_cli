@@ -30,6 +30,10 @@ ul li {
   margin: 20px 0;
 }
 
+ul li p {
+  overflow: auto;
+}
+
 .box {
   display: -webkit-box;
   display: -ms-flexbox;
