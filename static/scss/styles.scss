@@ -1,6 +1,8 @@
 // variables
 $danger:#cf343e;
-$safe: rgb(106, 184, 106);
+$danger-hover: rgb(221, 116, 116);
+$safe: rgb(74, 190, 74);
+$safe-hover:rgb(128, 207, 128);
 $no-click: rgb(219, 219, 45);
 
 body{
@@ -54,9 +56,15 @@ button{
 
 	&.danger{
 		background-color: $danger;
+		&:hover{
+			background-color: $danger-hover;
+		}
 	}
 	&.safe{
 		background-color: $safe;
+		&:hover{
+			background-color: $safe-hover;
+		}
 	}
 	&.no-click{
 		background-color: $no-click;

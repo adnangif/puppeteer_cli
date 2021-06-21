@@ -26,7 +26,7 @@ ul li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 2px solid #6ab86a;
+  border-bottom: 2px solid #4abe4a;
   margin: 20px 0;
 }
 
@@ -68,8 +68,16 @@ button.danger {
   background-color: #cf343e;
 }
 
+button.danger:hover {
+  background-color: #dd7474;
+}
+
 button.safe {
-  background-color: #6ab86a;
+  background-color: #4abe4a;
+}
+
+button.safe:hover {
+  background-color: #80cf80;
 }
 
 button.no-click {
