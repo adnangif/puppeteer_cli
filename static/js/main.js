@@ -171,13 +171,37 @@ const app = Vue.createApp({
 				body: JSON.stringify({
 					msg: "Generate Script please",
 				}),
-			}).then((res) => {
-				return res.json();
-			}).then((data)=>{
-				console.log(data)
 			})
+				.then((res) => {
+					return res.json();
+				})
+				.then((data) => {
+					console.log(data);
+				});
 		},
 
+		runAll() {
+			// Make run All button unclickable
+			const runAllBtn = document.querySelector(".run-all");
+			runAllBtn.classList.toggle("no-click");
+
+			let btns = document.querySelectorAll("li button.safe");
+			btns = [...btns];
+			btns.reverse();
+
+			let i = 0;
+			const timer = setInterval(() => {
+				if (i < btns.length) {
+					btns[i].click();
+					i++;
+				} else {
+					console.log("clearing interval");
+					clearInterval(timer);
+					// Make run All button clickable again
+					runAllBtn.classList.toggle("no-click");
+				}
+			}, 2000);
+		},
 		// // run all the commands one by one
 		// runAll() {
 		// 	console.log("clicked runAll");
