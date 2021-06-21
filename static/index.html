@@ -27,7 +27,13 @@
             <button @click="updateDB" class="danger">Load Saved Commands</button>
             <button @click="save" class="safe">Save</button>
             <button @click="runAll" class="safe run-all">Run All</button>
-            <button @click="generateScript" class="safe">Generate Script</button>
+            <button @click="generateScript" class="generate-script safe">
+                <div v-if="!code_in_display">Generate Script</div>
+                <div v-else>Hide</div>
+            </button>
+        </div>
+        <div class="text-box hide">
+            <textarea  id="code" cols="90" rows="10" v-bind:value="code"></textarea>
         </div>
         <div class="box">
             <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp"

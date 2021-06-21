@@ -15,11 +15,34 @@ const app = Vue.createApp({
 			command: "",
 			cmd_count: 0,
 			data: {},
+			code_in_display: false,
 		};
 	},
 	created() {
 		this.updateDB();
 	},
+	computed: {
+		code() {
+			let user_generated = "";
+			this.commandDB.commandList.forEach((command) => {
+				if (command.trim().startsWith("page")) {
+					user_generated = user_generated + "await ";
+				}
+				user_generated = user_generated + command + ";\n";
+			});
+			let text = `
+const puppeteer = require("puppeteer");
+browser = await puppeteer.launch({headless: true});     // set {headless: false} to see output on browser 
+page = await browser.newPage();
+
+${user_generated}
+await browser.close();
+
+`;
+			return text;
+		},
+	},
+
 	methods: {
 		// update command list
 		updateDB() {
@@ -154,25 +177,15 @@ const app = Vue.createApp({
 		},
 
 		generateScript() {
-			console.log("generating script...");
-			console.log(typeof FileSaver);
-			const url = this.base_url + "/generate";
-			fetch(url, {
-				method: "POST",
-				headers: {
-					accept: "application/json",
-					"content-type": "application/json",
-				},
-				body: JSON.stringify({
-					msg: "Generate Script please",
-				}),
-			})
-				.then((res) => {
-					return res.json();
-				})
-				.then((data) => {
-					console.log(data);
-				});
+			const text_box_parent = document.querySelector(".text-box");
+
+			text_box_parent.classList.toggle("hide");
+			this.code_in_display = !this.code_in_display;
+
+			// change button color to danger
+			const gen_btn = document.querySelector(".generate-script");
+			gen_btn.classList.toggle("safe");
+			gen_btn.classList.toggle("danger");
 		},
 
 		runAll() {
@@ -197,24 +210,6 @@ const app = Vue.createApp({
 				}
 			}, 2000);
 		},
-		// // run all the commands one by one
-		// runAll() {
-		// 	console.log("clicked runAll");
-
-		// 	let data = [...this.commandDB.commandList];
-		// 	data.reverse();
-		// 	console.log(data);
-
-		// 	const url = this.base_url + "/runAll";
-		// 	fetch(url, {
-		// 		method: "POST",
-		// 		headers: {
-		// 			accept: "application/json",
-		// 			"content-type": "application/json",
-		// 		},
-		// 		body: JSON.stringify(data),
-		// 	});
-		// },
 	},
 });
 
