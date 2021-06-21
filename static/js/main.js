@@ -160,12 +160,6 @@ await browser.close();
 			})();
 		},
 
-		// delaying Function
-		// blocks main eventLoop to simulate synchronous sleep
-		delay(ms, callbackFunc = () => {}) {
-			Atomics.wait(new Int32Array(new SharedArrayBuffer(32)), 0, 0, ms);
-			callbackFunc();
-		},
 
 		// adding accessing history feature
 		arrowUp() {
