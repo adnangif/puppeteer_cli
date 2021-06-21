@@ -226,7 +226,7 @@ await browser.close();
 		},
 		showSuccessMessage() {
 			const tl = gsap.timeline({
-				defaults: { duration: 1, ease: "power2.inOut" },
+				defaults: { duration: .3, ease: "power2.inOut" },
 			});
 			tl.to('.msg.success',{x:10})
 			tl.to('.msg.success',{x:"-110%", delay:1})
