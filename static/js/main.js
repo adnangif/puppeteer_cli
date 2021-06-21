@@ -46,7 +46,6 @@ await browser.close();
 	methods: {
 		// update command list
 		updateDB() {
-			console.log("Got saved data from the server");
 			// get saved data from the server
 			const url = this.base_url + "/saved";
 			fetch(url, {
@@ -121,7 +120,6 @@ await browser.close();
 		},
 		// Redo a command
 		redoCommand(index) {
-			console.log("redo command index " + index);
 			const newC = this.commandDB.commandList[index];
 			// disable the button for some time
 			const btn = document
@@ -212,7 +210,6 @@ await browser.close();
 					btns[i].click();
 					i++;
 				} else {
-					console.log("clearing interval");
 					clearInterval(timer);
 					// Make run All button clickable again
 					runAllBtn.classList.toggle("no-click");
