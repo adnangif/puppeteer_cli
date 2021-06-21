@@ -118,17 +118,6 @@ app.post("/newCommand", (req, res) => {
 	}
 });
 
-// runs all the commands one by one
-app.post("/runAll", (req, res) => {
-	res.sendStatus(201);
-	const allCommands = req.body;
-	console.log(`\n\n\nrunning ${allCommands.length} commands...`);
-
-	allCommands.forEach((command) => {
-		runInPuppeteer(command);
-		delay(3000);
-	});
-});
 
 // generate Script
 app.post("/generate", (req, res) => {
