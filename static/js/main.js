@@ -1,6 +1,7 @@
 const app = Vue.createApp({
 	data() {
 		return {
+            first_time: true,
 			base_url: "//localhost:3000",
 			commandDB: {
 				commandList: [
@@ -20,6 +21,19 @@ const app = Vue.createApp({
 	},
 	created() {
 		this.updateDB();
+
+		// (async () => {
+		// 	const url = this.base_url + "/newCommand";
+		// 	const res = await fetch(url, {
+		// 		method: "POST",
+		// 		headers: {
+		// 			Accept: "application/json",
+		// 			"content-type": "application/json",
+		// 		},
+		// 		body: JSON.stringify({ command: "await console.log('connected!')"}),
+		// 	});
+		// 	this.showMsg();
+		// })();
 	},
 	computed: {
 		code() {
@@ -78,15 +92,10 @@ await browser.close();
 						},
 						body: JSON.stringify({ command: this.command }),
 					});
-					const data = await res.json();
-					if (data.message === "success") {
-						this.showSuccessMessage();
-					} else {
-						this.showFailureMessage();
-					}
+					this.showMsg();
 				})();
 
-				this.command = "";  // resetting
+				this.command = ""; // resetting
 				this.cmd_count = 0; // resetting
 			}
 		},
@@ -146,17 +155,25 @@ await browser.close();
 					},
 					body: JSON.stringify({ command: newC }),
 				});
-				const data = await res.json();
-
-				// Show message
-				if (data.message === "success") {
-					this.showSuccessMessage();
-				} else {
-					this.showFailureMessage();
-				}
+                
+				this.showMsg();
 			})();
 		},
 
+		showMsg() {
+            setTimeout(async () => {
+				const url = this.base_url + "/previous";
+				const res = await fetch(url, {
+					method: "GET",
+					headers: {
+						accept: "application/json",
+						"content-type": "application/json",
+					},
+				});
+				const data = await res.json();
+				console.log(data.message);
+			}, 1000)
+		},
 
 		// adding accessing history feature
 		arrowUp() {
@@ -181,7 +198,7 @@ await browser.close();
 			}
 		},
 
-		// generate script 
+		// generate script
 		generateScript() {
 			const text_box_parent = document.querySelector(".text-box");
 
@@ -194,7 +211,7 @@ await browser.close();
 			gen_btn.classList.toggle("danger");
 		},
 
-		// runs all the listed commands one by one 
+		// runs all the listed commands one by one
 		runAll() {
 			// Make run All button unclickable
 			const runAllBtn = document.querySelector(".run-all");
@@ -216,20 +233,20 @@ await browser.close();
 				}
 			}, 2000);
 		},
-		showSuccessMessage() {
-			const tl = gsap.timeline({
-				defaults: { duration: .3, ease: "power2.inOut" },
-			});
-			tl.to('.msg.success',{x:10})
-			tl.to('.msg.success',{x:"-110%", delay:1})
-		},
-		showFailureMessage() {
-			const tl = gsap.timeline({
-				defaults: { duration: 1, ease: "power2.inOut" },
-			});
-			tl.to('.msg.failure',{x:10})
-			tl.to('.msg.failure',{x:"-110%", delay:1})
-		},
+		// showSuccessMessage() {
+		// 	const tl = gsap.timeline({
+		// 		defaults: { duration: 0.3, ease: "power2.inOut" },
+		// 	});
+		// 	tl.to(".msg.success", { x: 10 });
+		// 	tl.to(".msg.success", { x: "-110%", delay: 1 });
+		// },
+		// showFailureMessage() {
+		// 	const tl = gsap.timeline({
+		// 		defaults: { duration: 1, ease: "power2.inOut" },
+		// 	});
+		// 	tl.to(".msg.failure", { x: 10 });
+		// 	tl.to(".msg.failure", { x: "-110%", delay: 10 });
+		// },
 	},
 });
 

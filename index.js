@@ -5,6 +5,19 @@ import open from "open";
 // variables
 const PORT = process.env.PORT || 3000;
 
+
+
+// Some houseKeeping
+var previous_task_ok = true;
+const callback_for_process = (err) => {
+	console.log(err.message);
+	previous_task_ok = false;
+    console.log("error...... ")
+};
+process.on("uncaughtException", callback_for_process);
+
+
+
 // declaring app and all the middleware
 const app = express();
 app.use(express.static("static"));
@@ -74,19 +87,25 @@ const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
 
 // puppeteer runs from this function
+
 const runInPuppeteer = (command) => {
 	try {
 		eval(command); // magic happens in this line :)
 	} catch (error) {
 		throw error;
 	}
-	process.on("uncaughtException", (err) => {
-		console.error("There was an uncaught error", err);
-		process.exit(1); //mandatory (as per the Node.js docs)
-	});
-	console.log(`completed task: ${command}`);
+	previous_task_ok = true;
+	console.log(`At task: ${command}`);
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
+
+app.get("/previous", (req, res) => {
+	if (previous_task_ok) {
+		res.send({ message: "success" });
+	} else {
+		res.send({ message: "failure!" });
+	}
+});
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {
@@ -112,4 +131,4 @@ app.listen(PORT, () => {
 	console.log("\n\n\n");
 });
 // open app in a browser
-await open("http://localhost:" + PORT);
+// await open("http://localhost:" + PORT);
