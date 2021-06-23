@@ -102,6 +102,8 @@ const runInPuppeteer = (command) => {
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
 
+
+// check if previous task succeeded
 app.get("/previous", (req, res) => {
 	if (previous_task_ok) {
 		res.send({ message: "success" });
@@ -116,14 +118,6 @@ app.post("/newCommand", (req, res) => {
 	let newCommand = req.body;
 	runInPuppeteer(newCommand.command); // run command in puppeteer
 
-	// try {
-	// 	runInPuppeteer(newCommand.command); // run command in puppeteer
-	// 	res.send({ message: "success" });
-	// } catch (error) {
-	// 	console.log(error);
-	// 	console.log("failure!");
-	// 	res.send({ message: "failure" });
-	// }
 });
 
 // app listens on port 3000
@@ -136,4 +130,4 @@ app.listen(PORT, () => {
 	console.log("\n\n\n");
 });
 // open app in a browser
-// await open("http://localhost:" + PORT);
+await open("http://localhost:" + PORT);
