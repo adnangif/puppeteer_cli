@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from "express";
 import { readFile, writeFile } from "fs";
+import open from "open";
 
 // variables
 const PORT = process.env.PORT || 3000;
@@ -9,7 +10,6 @@ const app = express();
 app.use(express.static("static"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
-
 
 // get previously saved data in json
 app.get("/saved", (req, res) => {
@@ -26,7 +26,6 @@ app.get("/saved", (req, res) => {
 				saveCommands: true,
 			}); // send a dummy object if file not found
 		} else {
-			// console.log(JSON.parse(data));
 			return res.send(JSON.parse(data));
 		}
 	});
@@ -36,7 +35,6 @@ app.get("/saved", (req, res) => {
 app.post("/", (req, res) => {
 	res.sendStatus(201);
 	let data = req.body;
-	// console.log(data);
 
 	// checks if the frontend wants to save the commands
 	if (data.saveCommands) {
@@ -57,7 +55,7 @@ app.post("/", (req, res) => {
 
 // puppeteer code injection starts here
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-extra";
+import puppeteer from "puppeteer-extra";   // Some stealthy thing, I don't know what it does but it actually works
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 puppeteer.use(StealthPlugin());
 
@@ -73,27 +71,17 @@ let options = {
 const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
 
-// keep all the data here for runtime purposes, canbe accessed from the virtual console
-let keep = {};
 
-// check mark to tell if the puppeteer is ready
-let ready = true; // at first puppeteer is ready
 
 // puppeteer runs from this function
 const runInPuppeteer = (command) => {
-	if (ready) {
-		try {
-			// ready = false; // set ready to false so we can delay the next puppeteer command
-			eval(command); // magic happens in this line :)
-		} catch (error) {
-			// console.log(error);
-			throw error;
-		}
-		console.log(`completed task: ${command}`);
-		// ready = true;
-	} else {
-		console.log("Maximum 1 request per second");
+	try {
+		eval(command); // magic happens in this line :)
+	} catch (error) {
+		// console.log(error);
+		throw error;
 	}
+	console.log(`completed task: ${command}`);
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
 
@@ -102,33 +90,24 @@ app.post("/newCommand", (req, res) => {
 	let newCommand = req.body;
 	try {
 		runInPuppeteer(newCommand.command); // run command in puppeteer
-		console.log('success!')
-		res.send({message:"success"})
+		console.log("success!");
+		res.send({ message: "success" });
 	} catch (error) {
-		console.log(error)
-		console.log("failure!")
-		res.send({message:"failure"})
+		console.log(error);
+		console.log("failure!");
+		res.send({ message: "failure" });
 	}
 });
 
-
-// generate Script
-app.post("/generate", (req, res) => {
-	console.log("generated...");
-	res.send({
-		link: "https://google.com",
-	});
-	console.log(req.body);
-});
 
 // app listens on port 3000
 app.listen(PORT, () => {
 	console.log("\n\n\n\n\n\n\n\n\n\n\n\n");
 	console.log("=======================*******==========================");
 	console.log("\n\n\n");
-	console.log("Open in browser: ");
+	console.log("Opening browser: ");
 	console.log("SERVER STARTED AT:>>>>>> http://localhost:" + PORT);
 	console.log("\n\n\n");
 });
 // open app in a browser
-// await open("http://localhost:" + PORT);
+await open("http://localhost:" + PORT);
