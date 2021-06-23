@@ -5,11 +5,11 @@ import open from "open";
 // variables
 const PORT = process.env.PORT || 3000;
 
-// Some houseKeeping
+// logs error to the console
 var previous_task_ok = true;
 const callback_for_process = (err) => {
-	console.log("error found: ");
-	console.log(err.message);
+	console.log("   error found >>>");
+	console.log("       " + err.message);
 	previous_task_ok = false;
 };
 process.on("uncaughtException", callback_for_process);
@@ -85,13 +85,15 @@ let page = await browser.newPage();
 // puppeteer runs from this function
 
 const runInPuppeteer = (command) => {
+    console.log('')
+    console.log('<========>')
+	console.log(`At task: ${command}`);
 	try {
 		eval(command); // magic happens in this line :)
 	} catch (error) {
 		throw error;
 	}
 	previous_task_ok = true;
-	console.log(`At task: ${command}`);
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
 
