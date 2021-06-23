@@ -85,7 +85,7 @@ button.safe:hover {
 }
 
 button.no-click {
-  background-color: #dbdb2d;
+  background-color: #bfd34e;
   pointer-events: none;
 }
 
