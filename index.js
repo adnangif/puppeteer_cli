@@ -55,10 +55,12 @@ app.post("/", (req, res) => {
 
 // puppeteer code injection starts here
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-extra";   // Some stealthy thing, I don't know what it does but it actually works
+import puppeteer from "puppeteer-extra"; // Some stealthy thing, I don't know what it does but it actually works
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 puppeteer.use(StealthPlugin());
 
+// the website will think you are on SAMSUNG GALAXY S9
+// useful for insta posting
 const USER_AGENT =
 	"Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36";
 let options = {
@@ -71,16 +73,17 @@ let options = {
 const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
 
-
-
 // puppeteer runs from this function
 const runInPuppeteer = (command) => {
 	try {
 		eval(command); // magic happens in this line :)
 	} catch (error) {
-		// console.log(error);
 		throw error;
 	}
+	process.on("uncaughtException", (err) => {
+		console.error("There was an uncaught error", err);
+		process.exit(1); //mandatory (as per the Node.js docs)
+	});
 	console.log(`completed task: ${command}`);
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
@@ -98,7 +101,6 @@ app.post("/newCommand", (req, res) => {
 		res.send({ message: "failure" });
 	}
 });
-
 
 // app listens on port 3000
 app.listen(PORT, () => {
