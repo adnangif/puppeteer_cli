@@ -7,11 +7,11 @@ const PORT = process.env.PORT || 3000;
 
 // logs error to the console
 var previous_task_ok = true;
-let error_msg = "";
+var error_msg = "";
 const callback_for_process = (err) => {
 	console.log("   error found >>>");
 	console.log("       " + err.message);
-    error_msg = err.message;
+	error_msg = err.message;
 	previous_task_ok = false;
 };
 process.on("uncaughtException", callback_for_process);
@@ -87,15 +87,18 @@ let page = await browser.newPage();
 // puppeteer runs from this function
 
 const runInPuppeteer = (command) => {
-    console.log('')
-    console.log('<========>')
+	console.log("");
+	console.log("<========>");
 	console.log(`At task: ${command}`);
 	try {
 		eval(command); // magic happens in this line :)
 	} catch (error) {
-		throw error;
+		// throw error;
+		error_msg = error.message;
+		console.log(error_msg);
+		previous_task_ok = false;
 	}
-	previous_task_ok = true;
+
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
 
@@ -103,13 +106,13 @@ app.get("/previous", (req, res) => {
 	if (previous_task_ok) {
 		res.send({ message: "success" });
 	} else {
-        res.send({message: error_msg})
+		res.send({ message: error_msg });
 	}
 });
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {
-    res.sendStatus(201)
+	res.sendStatus(201);
 	let newCommand = req.body;
 	runInPuppeteer(newCommand.command); // run command in puppeteer
 
