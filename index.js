@@ -7,9 +7,11 @@ const PORT = process.env.PORT || 3000;
 
 // logs error to the console
 var previous_task_ok = true;
+let error_msg = "";
 const callback_for_process = (err) => {
 	console.log("   error found >>>");
 	console.log("       " + err.message);
+    error_msg = err.message;
 	previous_task_ok = false;
 };
 process.on("uncaughtException", callback_for_process);
@@ -101,7 +103,7 @@ app.get("/previous", (req, res) => {
 	if (previous_task_ok) {
 		res.send({ message: "success" });
 	} else {
-		res.send({ message: "failure!" });
+        res.send({message: error_msg})
 	}
 });
 

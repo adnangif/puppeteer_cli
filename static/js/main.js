@@ -171,7 +171,13 @@ await browser.close();
 					},
 				});
 				const data = await res.json();
-				console.log(data.message);
+                const msg = data.message
+
+                if(msg.includes("success")){
+                    console.log("success!!")
+                }else{
+                    console.log(msg)
+                }
 			}, 1000)
 		},
 
