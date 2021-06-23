@@ -1,7 +1,8 @@
 const app = Vue.createApp({
 	data() {
 		return {
-            first_time: true,
+			msg: "Ready....!",
+            success:true,
 			base_url: "//localhost:3000",
 			commandDB: {
 				commandList: [
@@ -155,13 +156,13 @@ await browser.close();
 					},
 					body: JSON.stringify({ command: newC }),
 				});
-                
+
 				this.showMsg();
 			})();
 		},
 
 		showMsg() {
-            setTimeout(async () => {
+			setTimeout(async () => {
 				const url = this.base_url + "/previous";
 				const res = await fetch(url, {
 					method: "GET",
@@ -171,14 +172,20 @@ await browser.close();
 					},
 				});
 				const data = await res.json();
-                const msg = data.message
+				const msg = data.message;
 
-                if(msg.includes("success")){
-                    console.log("success!!")
-                }else{
-                    console.log(msg)
-                }
-			}, 1000)
+				if (msg.includes("success")) {
+					this.alertUser("Successful!", true);
+				} else {
+					this.alertUser(msg, false);
+				}
+			}, 1000);
+		},
+
+		// alert user with message
+		alertUser(msg, success) {
+			this.msg = msg;
+            this.success = success;
 		},
 
 		// adding accessing history feature

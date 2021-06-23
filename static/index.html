@@ -41,6 +41,7 @@
                 v-model="command">
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
+        <div class="msg">{{ msg }}</div>
         <ul>
             <li v-for="(item,index) in commandDB.commandList">
                 <p>{{ item }}</p>
@@ -53,8 +54,6 @@
         </ul>
 
     </div>
-    <div class="msg success">Success!</div>
-    <div class="msg failure">Failure!</div>
 
 </body>
 
