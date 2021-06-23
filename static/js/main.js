@@ -246,20 +246,6 @@ await browser.close();
 				}
 			}, 2000);
 		},
-		// showSuccessMessage() {
-		// 	const tl = gsap.timeline({
-		// 		defaults: { duration: 0.3, ease: "power2.inOut" },
-		// 	});
-		// 	tl.to(".msg.success", { x: 10 });
-		// 	tl.to(".msg.success", { x: "-110%", delay: 1 });
-		// },
-		// showFailureMessage() {
-		// 	const tl = gsap.timeline({
-		// 		defaults: { duration: 1, ease: "power2.inOut" },
-		// 	});
-		// 	tl.to(".msg.failure", { x: 10 });
-		// 	tl.to(".msg.failure", { x: "-110%", delay: 10 });
-		// },
 	},
 });
 
