@@ -66,8 +66,8 @@ app.post("/", (req, res) => {
 
 // puppeteer code injection starts here
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-extra"; // Some stealthy thing, I don't know what it does but it actually works
-import StealthPlugin from "puppeteer-extra-plugin-stealth";
+import puppeteer from "puppeteer-extra"; 
+import StealthPlugin from "puppeteer-extra-plugin-stealth";   // Some stealthy thing, I don't know what it does but it actually works
 puppeteer.use(StealthPlugin());
 
 // the website will think you are on SAMSUNG GALAXY S9
