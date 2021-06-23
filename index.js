@@ -91,7 +91,12 @@ const runInPuppeteer = (command) => {
 	console.log("<========>");
 	console.log(`At task: ${command}`);
 	try {
-		eval(command); // magic happens in this line :)
+		let cmd = command
+		if (cmd.includes("await page")){
+			cmd = cmd.replace("await ","")
+		}
+		eval(cmd); // magic happens in this line :)
+		previous_task_ok = true;
 	} catch (error) {
 		// throw error;
 		error_msg = error.message;
