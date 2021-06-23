@@ -5,18 +5,14 @@ import open from "open";
 // variables
 const PORT = process.env.PORT || 3000;
 
-
-
 // Some houseKeeping
 var previous_task_ok = true;
 const callback_for_process = (err) => {
+	console.log("error found: ");
 	console.log(err.message);
 	previous_task_ok = false;
-    console.log("error...... ")
 };
 process.on("uncaughtException", callback_for_process);
-
-
 
 // declaring app and all the middleware
 const app = express();
@@ -109,16 +105,18 @@ app.get("/previous", (req, res) => {
 
 // Get new command from here
 app.post("/newCommand", (req, res) => {
+    res.sendStatus(201)
 	let newCommand = req.body;
-	try {
-		runInPuppeteer(newCommand.command); // run command in puppeteer
-		console.log("success!");
-		res.send({ message: "success" });
-	} catch (error) {
-		console.log(error);
-		console.log("failure!");
-		res.send({ message: "failure" });
-	}
+	runInPuppeteer(newCommand.command); // run command in puppeteer
+
+	// try {
+	// 	runInPuppeteer(newCommand.command); // run command in puppeteer
+	// 	res.send({ message: "success" });
+	// } catch (error) {
+	// 	console.log(error);
+	// 	console.log("failure!");
+	// 	res.send({ message: "failure" });
+	// }
 });
 
 // app listens on port 3000
