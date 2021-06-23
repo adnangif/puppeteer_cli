@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"
         integrity="sha512-2fk3Q4NXPYAqIha0glLZ2nluueK43aNoxvijPf53+DgL7UW9mkN+uXc1aEmnZdkkZVvtJZltpRt+JqTWc3TS3Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-    <script src="https://unpkg.com/vue@3.0.2" defer></script>
+    <script src="https://unpkg.com/vue@3.1.2"></script>
     <script src="./js/main.js" defer></script>
     <link rel="shortcut icon" href="#" type="image/x-icon">
 
@@ -41,19 +41,19 @@
                 v-model="command">
             <button class="safe" @click="addCommand">Run Command</button>
         </div>
-        <div class="msg">{{ msg }}</div>
+        <div class="msg" :class="{ success: success }" >{{ msg }}</div>
         <ul>
-            <li v-for="(item,index) in commandDB.commandList">
-                <p>{{ item }}</p>
-                <div class="btn-container">
-                    <button class="no-click hide"><i class="fas fa-redo"></i></button>
-                    <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
-                    <button class="danger" @click="removeCommand(index)">Remove</button>
-                </div>
+            <li v-for=" (item,index) in commandDB.commandList">
+            <p>{{ item }}</p>
+            <div class="btn-container">
+                <button class="no-click hide"><i class="fas fa-redo"></i></button>
+                <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
+                <button class="danger" @click="removeCommand(index)">Remove</button>
+            </div>
             </li>
-        </ul>
+            </ul>
 
-    </div>
+        </div>
 
 </body>
 

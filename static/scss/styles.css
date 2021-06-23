@@ -131,4 +131,28 @@ h2 .fas {
 .text-box.hide {
   display: none;
 }
+
+.msg {
+  position: absolute;
+  min-width: 20rem;
+  padding: 15px;
+  text-align: center;
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
+  margin-left: 5px;
+  color: #9c7c10;
+  background-color: #bfd34e;
+  border-left: 7px solid #9c7c10;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 4px;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.msg.success {
+  border-left: 7px solid #028a3a;
+  color: #028a3a;
+  background-color: #5de66f;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -27,7 +27,7 @@ ul {
 		justify-content: space-between;
 		border-bottom: 2px solid $safe;
 		margin: 20px 0;
-		p{
+		p {
 			overflow: auto;
 		}
 	}
@@ -102,13 +102,28 @@ h2 {
 	}
 }
 
+.msg {
+	position: absolute;
+	min-width: 20rem;
+	padding: 15px;
+	text-align: center;
+	transform: translateY(-110%);
+	margin-left: 5px;
+	color: rgb(156, 124, 16);
+	background-color: rgb(191, 211, 78);
+	border-left: 7px solid rgb(156, 124, 16);
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 4px;
+	transition: all 0.1s ease-in;
 
-
-
-
-
-
-
+	&.success {
+		$main: rgb(2, 138, 58);
+		border-left: 7px solid $main;
+		color: $main;
+		background-color: rgb(93, 230, 111);
+	}
+}
 
 // .msg {
 // 	display: flex;
