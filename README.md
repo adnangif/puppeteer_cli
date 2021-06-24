@@ -48,7 +48,7 @@ await page.click("span[title='puppeteer_cli']")
 1.
 ![first img](https://github.com/adnangif/puppeteer_cli/blob/final/demo/demo_goto_this_repo/demo_21.png)
 2.
-![first img](https://github.com/adnangif/puppeteer_cli/blob/final/demo/demo_goto_this_repo/demo_22.png)
+![first img](https://github.com/adnangif/puppeteer_cli/blob/final/demo/demo_goto_this_repo/demo_23.png)
 3.
 ![first img](https://github.com/adnangif/puppeteer_cli/blob/final/demo/demo_goto_this_repo/demo_24.png)
 4.
