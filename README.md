@@ -43,5 +43,19 @@ await page.click("span[title='puppeteer_cli']")
 ```
 ## Demo
 
+1.
 ![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_21.png)
-
+2.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_22.png)
+3.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_23.png)
+4.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_24.png)
+5.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_25.png)
+6.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_26.png)
+7.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_27.png)
+8.
+![first img](https://github.com/adnangif/puppeteer_cli/blob/3bf59690810ada3095677e715416236b40caf626/demo/demo_goto_this_repo/demo_28.png)
