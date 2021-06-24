@@ -29,3 +29,15 @@ node index.js
 
 After running this code, a link should open on your default browser At: http://localhost:3000
 And another blank page chromium or google chrome browser instance will open with puppeteer in charge. 
+
+## How to use:
+By default, **page** object is given to do any kind of operation, for Example:
+
+```javascript
+await page.goto("https://google.com/")
+await page.type("input", "github.com/adnangif",{delay:200})
+await page.type("input", "\n",{delay:200})
+await page.click("h3")
+await page.click("span[title='puppeteer_cli']")
+
+```
