@@ -1,18 +1,17 @@
 {
-	"name": "project-count-14",
+	"name": "puppeteer_cli",
 	"version": "1.0.0",
-	"description": "",
+	"description": "puppeteer on steroids!!!",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
 		"start": "node index.js",
 		"devStart": "nodemon index.js"
 	},
-	"author": "",
-	"license": "ISC",
+	"author": "adnangif",
+	"license": "MIT",
 	"dependencies": {
 		"express": "^4.17.1",
-		"file-saver": "^2.0.5",
 		"open": "^8.2.0",
 		"puppeteer": "^10.0.0",
 		"puppeteer-extra": "^3.1.18",
