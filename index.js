@@ -29,8 +29,11 @@ app.get("/saved", (req, res) => {
 			console.log(err);
 			return res.send({
 				commandList: [
-					"page.goto('https://google.com')",
-					"console.log('hello world')",
+					`await page.goto("https://google.com/")`,
+					`await page.type("input", "github.com/adnangif",{delay:200})`,
+					`await page.type("input", "\n",{delay:200})`,
+					`await page.click("h3")`,
+					`await page.click("span[title='puppeteer_cli']")`,
 				],
 				restartInstance: false,
 				runFromStart: false,
@@ -66,8 +69,8 @@ app.post("/", (req, res) => {
 
 // puppeteer code injection starts here
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-extra"; 
-import StealthPlugin from "puppeteer-extra-plugin-stealth";   // Some stealthy thing, I don't know what it does but it actually works
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth"; // Some stealthy thing, I don't know what it does but it actually works
 puppeteer.use(StealthPlugin());
 
 // the website will think you are on SAMSUNG GALAXY S9
@@ -91,9 +94,9 @@ const runInPuppeteer = (command) => {
 	console.log("<========>");
 	console.log(`At task: ${command}`);
 	try {
-		let cmd = command
-		if (cmd.includes("await page")){
-			cmd = cmd.replace("await ","")
+		let cmd = command;
+		if (cmd.includes("await page")) {
+			cmd = cmd.replace("await ", "");
 		}
 		eval(cmd); // magic happens in this line :)
 		previous_task_ok = true;
@@ -103,10 +106,8 @@ const runInPuppeteer = (command) => {
 		console.log(error_msg);
 		previous_task_ok = false;
 	}
-
 };
 // ======================== PUPPETEER_____SECTION____END ===========================
-
 
 // check if previous task succeeded
 app.get("/previous", (req, res) => {
@@ -122,7 +123,6 @@ app.post("/newCommand", (req, res) => {
 	res.sendStatus(201);
 	let newCommand = req.body;
 	runInPuppeteer(newCommand.command); // run command in puppeteer
-
 });
 
 // app listens on port 3000
