@@ -8,5 +8,3 @@ script generator and much more. 🔥🔥🔥
 ## next feature: write awesome awesome puppeteer script without knowing Javascript 🤯
 
 stay tuned 😍
-
-### Help needed in writing Readme.md!!! (not good at writing Readme.md 😓)
