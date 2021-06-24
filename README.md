@@ -1,10 +1,16 @@
-# puppeteer_cli
+# Puppeteer on steroids :muscle: !
 
-> a jupyter note book like IDE for fast puppeteer code writing
+**jupyter notebook** like development environment for puppeteer. Build puppeteer apps with least effort and best result.
 
-console like arrow up and arrow down history, real-time code deployment in puppeteer,
-script generator and much more. 🔥🔥🔥
 
-## next feature: write awesome awesome puppeteer script without knowing Javascript 🤯
+# installation
 
-stay tuned 😍
+**requirements:**
+* npm latest version
+
+--bash 
+git clone https://github.com/adnangif/puppeteer_cli
+cd puppeteer_cli
+npm install -g yarn
+yarn install
+
