@@ -30,7 +30,7 @@ node index.js
 After running this code, a link should open on your default browser At: http://localhost:3000
 And another blank page chromium or google chrome browser instance will open with puppeteer in charge. 
 
-## How to use:
+## Usage:
 By default, **page** object is given to do any kind of operation, for Example:
 
 ```javascript
