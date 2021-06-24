@@ -29,11 +29,11 @@ app.get("/saved", (req, res) => {
 			console.log(err);
 			return res.send({
 				commandList: [
-					`await page.goto("https://google.com/")`,
-					`await page.type("input", "github.com/adnangif",{delay:200})`,
-					`await page.type("input", "\n",{delay:200})`,
-					`await page.click("h3")`,
 					`await page.click("span[title='puppeteer_cli']")`,
+					`await page.click("h3")`,
+					`await page.type("input", "\n",{delay:200})`,
+					`await page.type("input", "github.com/adnangif",{delay:200})`,
+					`await page.goto("https://google.com/")`,
 				],
 				restartInstance: false,
 				runFromStart: false,
