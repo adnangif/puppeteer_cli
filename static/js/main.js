@@ -41,7 +41,9 @@ const app = Vue.createApp({
 	computed: {
 		code() {
 			let user_generated = "";
-			this.commandDB.commandList.forEach((command) => {
+            let comm = [...this.commandDB.commandList]
+            comm.reverse();
+			comm.forEach((command) => {
 				if (command.trim().startsWith("page")) {
 					user_generated = user_generated + "await ";
 				}
