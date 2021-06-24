@@ -2,7 +2,7 @@ const app = Vue.createApp({
 	data() {
 		return {
 			msg: "Ready....!",
-            success:true,
+			success: true,
 			base_url: "//localhost:3000",
 			commandDB: {
 				commandList: [
@@ -20,19 +20,23 @@ const app = Vue.createApp({
 			code_in_display: false,
 		};
 	},
+	mounted() {
+		this.$nextTick(() => {
+			const btns = document.querySelectorAll("button.caution");
+			btns.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					btn.classList.toggle("no-click");
+
+					setTimeout(() => {
+						btn.classList.toggle("no-click");
+						console.log(btn);
+					}, 1000);
+				});
+			});
+		});
+	},
 	created() {
 		this.updateDB();
-		
-		const btns = document.querySelectorAll("button")
-		btns.forEach((btn)=>{
-			btn.addEventListener("click",()=>{
-				btn.classList.toggle("no-click")
-				setTimeout(()=>{
-					btn.clissList.toggle("no-click")
-				},1000)
-			})
-		})
-
 	},
 	computed: {
 		code() {
@@ -130,19 +134,19 @@ await browser.close();
 		redoCommand(index) {
 			const newC = this.commandDB.commandList[index];
 			// disable the button for some time
-			// const btn = document
-			// 	.querySelector("ul")
-			// 	.children[index].querySelector(".safe");
-			// const waitDisk = document
-			// 	.querySelector("ul")
-			// 	.children[index].querySelector(".no-click");
+			const btn = document
+				.querySelector("ul")
+				.children[index].querySelector(".safe");
+			const waitDisk = document
+				.querySelector("ul")
+				.children[index].querySelector(".no-click");
 
-			// btn.classList.toggle("hide");
-			// waitDisk.classList.toggle("hide");
-			// setTimeout(() => {
-			// 	btn.classList.toggle("hide");
-			// 	waitDisk.classList.toggle("hide");
-			// }, 1000);
+			btn.classList.toggle("hide");
+			waitDisk.classList.toggle("hide");
+			setTimeout(() => {
+				btn.classList.toggle("hide");
+				waitDisk.classList.toggle("hide");
+			}, 1000);
 
 			(async () => {
 				const url = this.base_url + "/newCommand";
@@ -183,7 +187,7 @@ await browser.close();
 		// alert user with message
 		alertUser(msg, success) {
 			this.msg = msg;
-            this.success = success;
+			this.success = success;
 		},
 
 		// adding accessing history feature

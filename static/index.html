@@ -24,10 +24,10 @@
 <body>
     <div id="app" class="container">
         <div class="secondary-commands">
-            <button @click="updateDB" class="danger">Load Saved Commands</button>
-            <button @click="save" class="safe">Save</button>
-            <button @click="runAll" class="safe run-all">Run All</button>
-            <button @click="generateScript" class="generate-script safe">
+            <button @click="updateDB" class="danger caution">Load Saved Commands</button>
+            <button @click="save" class="safe caution">Save</button>
+            <button @click="runAll" class="safe run-all caution">Run All</button>
+            <button @click="generateScript" class="generate-script safe caution">
                 <div v-if="!code_in_display">Generate Script</div>
                 <div v-else>Hide</div>
             </button>
@@ -39,15 +39,15 @@
         <div class="box">
             <input type="text" @keyup.enter="addCommand" @keyup.arrow-down="arrowDown" @keyup.arrow-up="arrowUp"
                 v-model="command">
-            <button class="safe" @click="addCommand">Run Command</button>
+            <button class="safe caution" @click="addCommand">Run Command</button>
         </div>
         <div class="msg" :class="{ success: success }" >{{ msg }}</div>
         <ul>
             <li v-for=" (item,index) in commandDB.commandList">
             <p>{{ item }}</p>
             <div class="btn-container">
-                <button class="no-click hide"><i class="fas fa-redo"></i></button>
-                <button @click="redoCommand(index)" class="safe"><i class="fas fa-redo"></i></button>
+                <button class="no-click hide "><i class="fas fa-redo"></i></button>
+                <button @click="redoCommand(index)" class="safe "><i class="fas fa-redo"></i></button>
                 <button class="danger" @click="removeCommand(index)">Remove</button>
             </div>
             </li>
