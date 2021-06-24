@@ -8,10 +8,14 @@
 **requirements:**
 * npm latest version
 
---bash 
-git clone https://github.com/adnangif/puppeteer_cli
+```bash 
+git clone https://github.com/adnangif/puppeteer_cli 
+
 cd puppeteer_cli
+
 npm install -g yarn
+
 yarn install
 
---
+
+```
