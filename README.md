@@ -6,13 +6,15 @@
 # installation
 
 **requirements:**
-* npm latest version
+* nodejs latest version
+
 
 ```bash
 # clone this repo
 git clone https://github.com/adnangif/puppeteer_cli 
 
-cd puppeteer_cli # or navigate to puppeteer_cli folder
+# or navigate to puppeteer_cli folder
+cd puppeteer_cli 
 
 # install yarn
 npm install -g yarn
@@ -20,5 +22,6 @@ npm install -g yarn
 # install dependancy
 yarn install
 
-
+# now to run the APP
+node index.js
 ```
