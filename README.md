@@ -14,7 +14,7 @@
 # clone this repo
 git clone https://github.com/adnangif/puppeteer_cli 
 
-# or navigate to puppeteer_cli folder
+# navigate to puppeteer_cli folder
 cd puppeteer_cli 
 
 # install yarn
