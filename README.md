@@ -1,13 +1,14 @@
-# Puppeteer on steroids :muscle: !
+# Puppeteer on steroids :muscle: !!!
 
 **jupyter notebook** like development environment for puppeteer. Build puppeteer apps with least effort and best result.
 
-
-# installation
+## installation
 
 **requirements:**
+
 * nodejs latest version
 
+### How to install:
 
 ```bash
 # clone this repo
