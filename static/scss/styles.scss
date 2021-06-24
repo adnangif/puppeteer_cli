@@ -3,7 +3,7 @@ $danger: #cf343e;
 $danger-hover: rgb(216, 100, 100);
 $safe: rgb(74, 190, 74);
 $safe-hover: rgb(115, 214, 115);
-$no-click: rgb(191,211,78);
+$no-click: rgb(191, 211, 78);
 
 body {
 	color: #fff;
@@ -62,16 +62,20 @@ button {
 		&:hover {
 			background-color: $danger-hover;
 		}
+		&.no-click {
+			background-color: $no-click;
+			pointer-events: none;
+		}
 	}
 	&.safe {
 		background-color: $safe;
 		&:hover {
 			background-color: $safe-hover;
 		}
-	}
-	&.no-click {
-		background-color: $no-click;
-		pointer-events: none;
+		&.no-click {
+			background-color: $no-click;
+			pointer-events: none;
+		}
 	}
 }
 h2 {
@@ -124,4 +128,3 @@ h2 {
 		background-color: rgb(93, 230, 111);
 	}
 }
-

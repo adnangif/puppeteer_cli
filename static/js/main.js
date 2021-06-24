@@ -22,19 +22,17 @@ const app = Vue.createApp({
 	},
 	created() {
 		this.updateDB();
+		
+		const btns = document.querySelectorAll("button")
+		btns.forEach((btn)=>{
+			btn.addEventListener("click",()=>{
+				btn.classList.toggle("no-click")
+				setTimeout(()=>{
+					btn.clissList.toggle("no-click")
+				},1000)
+			})
+		})
 
-		// (async () => {
-		// 	const url = this.base_url + "/newCommand";
-		// 	const res = await fetch(url, {
-		// 		method: "POST",
-		// 		headers: {
-		// 			Accept: "application/json",
-		// 			"content-type": "application/json",
-		// 		},
-		// 		body: JSON.stringify({ command: "await console.log('connected!')"}),
-		// 	});
-		// 	this.showMsg();
-		// })();
 	},
 	computed: {
 		code() {
@@ -132,19 +130,19 @@ await browser.close();
 		redoCommand(index) {
 			const newC = this.commandDB.commandList[index];
 			// disable the button for some time
-			const btn = document
-				.querySelector("ul")
-				.children[index].querySelector(".safe");
-			const waitDisk = document
-				.querySelector("ul")
-				.children[index].querySelector(".no-click");
+			// const btn = document
+			// 	.querySelector("ul")
+			// 	.children[index].querySelector(".safe");
+			// const waitDisk = document
+			// 	.querySelector("ul")
+			// 	.children[index].querySelector(".no-click");
 
-			btn.classList.toggle("hide");
-			waitDisk.classList.toggle("hide");
-			setTimeout(() => {
-				btn.classList.toggle("hide");
-				waitDisk.classList.toggle("hide");
-			}, 1000);
+			// btn.classList.toggle("hide");
+			// waitDisk.classList.toggle("hide");
+			// setTimeout(() => {
+			// 	btn.classList.toggle("hide");
+			// 	waitDisk.classList.toggle("hide");
+			// }, 1000);
 
 			(async () => {
 				const url = this.base_url + "/newCommand";
