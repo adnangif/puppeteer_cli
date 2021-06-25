@@ -1,6 +1,6 @@
 {
 	"name": "puppeteer_steroids",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "puppeteer on steroids!!!",
 	"main": "index.js",
 	"type": "module",
@@ -8,8 +8,8 @@
 		"start": "node index.js",
 		"devStart": "nodemon index.js"
 	},
-	"bin":{
-		"puppeteer_cli":"./index.js"
+	"bin": {
+		"puppeteer_cli": "./index.js"
 	},
 	"author": "adnangif",
 	"license": "MIT",
