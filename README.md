@@ -27,6 +27,21 @@ yarn install
 node index.js
 ```
 
+Or,
+```bash
+
+# install yarn globally, this is optional but recommended
+npm install -g yarn
+
+# Now use yarn to install 
+yarn add puppeteer_steroids  # may take upto 20minutes depending on internet connection
+
+npm run puppeteer_cli
+
+
+```
+
+
 After running this code, a link should open on your default browser At: http://localhost:3000
 And another blank page chromium or google chrome browser instance will open with puppeteer in charge. 
 
