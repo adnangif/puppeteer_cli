@@ -30,13 +30,14 @@ node index.js
 Or,
 ```bash
 
-# install yarn globally, this is optional but recommended
+# install yarn, this is optional but recommended
 npm install -g yarn
 
 # Now use yarn to install 
-yarn add puppeteer_steroids  # may take upto 20minutes depending on internet connection
+yarn global add puppeteer_steroids  # may take upto 20minutes depending on internet connection
 
-npm run puppeteer_ui
+# run from command line
+puppeteer_ui
 
 
 ```
