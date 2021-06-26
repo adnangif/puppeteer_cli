@@ -18,11 +18,8 @@ git clone https://github.com/adnangif/puppeteer_ui
 # navigate to puppeteer_ui folder
 cd puppeteer_ui 
 
-# install yarn
-npm install -g yarn
-
 # install dependancy
-yarn install
+npm install
 
 # now to run the APP
 node index.js
