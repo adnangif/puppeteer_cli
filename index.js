@@ -31,7 +31,7 @@ app.get("/saved", (req, res) => {
 			console.log(err);
 			return res.send({
 				commandList: [
-					`await page.click("span[title='puppeteer_cli']")`,
+					`await page.click("span[title='puppeteer_ui']")`,
 					`await page.click("h3")`,
 					`await page.type("input", "\\n")`,
 					`await page.type("input", "github.com/adnangif")`,
