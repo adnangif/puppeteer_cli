@@ -1,5 +1,5 @@
 {
-	"name": "puppeteer_steroids",
+	"name": "puppeteer_ui",
 	"version": "1.0.1",
 	"description": "puppeteer on steroids!!!",
 	"main": "index.js",
@@ -9,7 +9,7 @@
 		"devStart": "nodemon index.js"
 	},
 	"bin": {
-		"puppeteer_cli": "./index.js"
+		"puppeteer_ui": "./index.js"
 	},
 	"author": "adnangif",
 	"license": "MIT",
@@ -21,7 +21,6 @@
 		"puppeteer-extra-plugin-stealth": "^2.7.8"
 	},
 	"devDependencies": {
-		"dotenv": "^10.0.0",
 		"nodemon": "^2.0.7"
 	}
 }
