@@ -7,7 +7,7 @@
 **requirements:**
 
 * nodejs latest version
-* Google Chrome or Chromium browser
+* Chromium browser 
 
 ### How to install:
 
