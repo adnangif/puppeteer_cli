@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import express, { json, urlencoded } from "express";
 import { readFile, writeFile } from "fs";
 import open from "open";
