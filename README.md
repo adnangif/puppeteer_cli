@@ -61,21 +61,21 @@ await page.click("span[title='puppeteer_ui']")
 ## Demo
 
 0.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_0.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_0.png)
 1.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_21.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_21.png)
 2.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_23.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_23.png)
 3.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_24.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_24.png)
 4.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_25.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_25.png)
 5.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_26.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_26.png)
 6.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_27.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_27.png)
 7.
-![first img](https://github.com/adnangif/puppeteer_ui/blob/final/demo/demo_goto_this_repo/demo_28.png)
+![first img](https://github.com/adnangif/puppeteer_ui/blob/for_image_file/demo/demo_goto_this_repo/demo_28.png)
 
 
 > special thanks to **zbz343** for creating this awesome readme
