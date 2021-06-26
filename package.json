@@ -9,7 +9,7 @@
 		"devStart": "nodemon index.js"
 	},
 	"bin": {
-		"puppeteer_cli": "./index.js"
+		"puppeteer_ui": "./index.js"
 	},
 	"author": "adnangif",
 	"license": "MIT",
