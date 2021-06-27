@@ -1,5 +1,5 @@
-{
-	"name": "puppeteer_steroids",
+{  
+	"name": "puppeteer_ui",
 	"version": "1.1.8",
 	"description": "puppeteer on steroids!!!",
 	"main": "index.js",
