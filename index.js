@@ -1,5 +1,11 @@
 #! /usr/bin/env node
 
+// __dirname is not defined in module
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import express, { json, urlencoded } from "express";
 import { readFile, writeFile } from "fs";
 import open from "open";
@@ -20,7 +26,7 @@ process.on("uncaughtException", callback_for_process);
 
 // declaring app and all the middleware
 const app = express();
-app.use(express.static("static"));
+app.use(express.static("client"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
