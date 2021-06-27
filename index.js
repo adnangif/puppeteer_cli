@@ -2,7 +2,7 @@
 
 // __dirname is not defined in module
 import { fileURLToPath } from "url";
-import { dirname } from "path";
+import path, { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -26,7 +26,7 @@ process.on("uncaughtException", callback_for_process);
 
 // declaring app and all the middleware
 const app = express();
-app.use(express.static("client"));
+app.use(express.static(path.join(__dirname, "client")));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
