@@ -94,6 +94,7 @@ let options = {
 };
 const browser = await puppeteer.launch(options);
 let page = await browser.newPage();
+page.setUserAgent(USER_AGENT)
 
 // puppeteer runs from this function
 
