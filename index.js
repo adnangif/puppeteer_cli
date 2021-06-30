@@ -93,8 +93,11 @@ let options = {
 	},
 };
 const browser = await puppeteer.launch(options);
+const delay = (wait) => {
+	Atomics.wait(new Int32Array(new SharedArrayBuffer(1024), 0, 0, wait));
+};
 let page = await browser.newPage();
-page.setUserAgent(USER_AGENT)
+page.setUserAgent(USER_AGENT);
 
 // puppeteer runs from this function
 
